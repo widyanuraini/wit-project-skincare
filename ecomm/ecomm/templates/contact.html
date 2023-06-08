@@ -6,36 +6,42 @@
 <main class="mt-5">
     <div class="container">
         <!-- Heading -->
-        <h2 class="my-5 text-center">Checkout</h2>
+        <h2 class="my-5 text-center">Contact</h2>
 
-            <form action="" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="yTF5g7ceTgkwsOimKxZpuV10DG4a1TWFwQ60pneu047lPvu6kTAlNYPfYEC9G8jq">
-                <tr>
-                    <th>
-                        <label for="id_email">Email:</label>
-                    </th>
-                    <td>
-                        <input type="email" name="email" maxlength="254" required id="id_email">
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="id_subject">Subject:</label>
-                    </th>
-                    <td>
-                        <input type="text" name="subject" maxlength="255" required id="id_subject">
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="id_message">Message:</label>
-                    </th>
-                    <td>
-                        <textarea name="message" cols="40" rows="10" required id="id_message"></textarea>
-                    </td>
-                </tr>
-                <input type="submit" value="Submit">
-            </form>
+        <form method="POST" name="formContact">
+            {% csrf_token %}
+            <!--Grid row-->
+            <div class="row">
+                    <!--Card-->
+                    <div class="card p-4">
+                        <hr />
+                        <div class="container">
+                            <form action="action_page.php">
+                          
+                              <label for="name">Name</label>
+                              <input type="text" id="name" name="name" placeholder="Your name..">
+                          
+                              <label for="email">E-mail</label>
+                              <input type="text" id="email" name="email" placeholder="Your email..">
+                          
+                              <label for="subject">Subject</label>
+                              <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                          
+                              <input type="submit" value="Submit">
+                          
+                            </form>
+                          </div>
+
+                        <hr class="mb-4" />                    
+                    <button class="btn btn-primary" type="submit" {% if order.get_total_harga_order <= 0 %}disabled{% endif %}>Lanjut Belanja</button>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
+                
+            </div>
+            <!--Grid row-->
+        </form>
     </div>
 </main>
 <!--Main layout-->

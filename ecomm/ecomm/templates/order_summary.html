@@ -49,15 +49,19 @@
                     </div>
                 </td>
                 <td>
-                    
+					    
                     <div class="input-group plus-minus-input">
-                        <button class="input-group-button" class="minus" data-quantity="minus" data_field="quantity" href="{{ object.get_add_to_cart_url }}">
+                        <!-- <button class="input-group-button" class="minus"  data-quantity="minus" data_field="quantity">
                             <i class="fa fa-minus" aria-hidden="true"></i>
-                        </button>
-                        <input class="input-group-field" type="number" name="quantity" value={{pItem.quantity}}>
-                        <button type="button" class="plus" data-quantity="plus" data-field="quantity">
+                        </button> -->
+                        <input class="input" type="number" name="quantity" value={{pItem.quantity}} min = 0 size="10">
+                        <!-- <button type="input-group-button" class="plus" data-quantity="plus" data-field="quantity">
                             <i class="fa fa-plus" aria-hidden="true"></i> 
-                        </button>
+                        </button> -->
+                        <!-- <p>{{ object.deskripsi }}</p>
+                        <a href="{{ object.get_remove_to_cart_url }}" class="btn btn-danger ms-1">-</a>
+                        <input class="input" type="number" name="quantity" value={{pItem.quantity}} min = 0 size="10">
+                        <a href="{{ object.get_add_from_cart_url }}" class="btn btn-primary ms-1" >+</a> -->
                     </div>
                 </td>
                 <td>                

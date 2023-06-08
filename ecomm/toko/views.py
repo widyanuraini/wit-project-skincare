@@ -232,4 +232,4 @@ def contact_view(request):
             return render(request, 'contact/success.html')
     form = ContactForm()
     context = {'form': form}
-    return render(request, 'ecomm/templates/contact.html', context)
+    return render(request, 'contact.html', context)

@@ -3,6 +3,7 @@ from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django.forms import ModelForm
 from .models import contact
+# from .models import ReviewRating
 
 PILIHAN_PEMBAYARAN = (
     ('P', 'Paypal'),
@@ -22,3 +23,8 @@ class ContactForm(ModelForm):
     class Meta:
         model = contact
         fields = '__all__'
+
+# class ReviewForm(forms.ModelForm):
+#     class Meta:
+#         model = ReviewRating
+#         fields = ['subject', 'review', 'rating']
