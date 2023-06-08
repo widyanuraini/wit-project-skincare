@@ -6,9 +6,10 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils import timezone
 from django.views import generic
 from paypal.standard.forms import PayPalPaymentsForm
-
+from django.http import HttpResponse
 
 from .forms import CheckoutForm
+from .forms import ContactForm
 from .models import ProdukItem, OrderProdukItem, Order, AlamatPengiriman, Payment
 
 class HomeListView(generic.ListView):
@@ -71,6 +72,9 @@ class CheckoutView(LoginRequiredMixin, generic.FormView):
         except ObjectDoesNotExist:
             messages.error(self.request, 'Tidak ada pesanan yang aktif')
             return redirect('toko:order-summary')
+def order(request):
+    context = {'order':order.objects.filter(is_paid=FALSE, user = request.user)}
+    return render(request, 'order_summary.html', context)
 
 class PaymentView(LoginRequiredMixin, generic.FormView):
     def get(self, *args, **kwargs):
@@ -212,3 +216,20 @@ def paypal_return(request):
 def paypal_cancel(request):
     messages.error(request, 'Pembayaran dibatalkan')
     return redirect('toko:order-summary')
+
+# def contact(request):
+#     return render(request, 'ecomm/templates/contact.html')
+# class contact_view(generic.ListView):
+#     template_name = 'contact.html'
+#     queryset = ProdukItem.objects.all()
+
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'contact/success.html')
+    form = ContactForm()
+    context = {'form': form}
+    return render(request, 'ecomm/templates/contact.html', context)

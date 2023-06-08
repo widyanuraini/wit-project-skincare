@@ -48,7 +48,18 @@
                         {% endif %}
                     </div>
                 </td>
-                <td>{{ pItem.quantity }}</td>
+                <td>
+                    
+                    <div class="input-group plus-minus-input">
+                        <button class="input-group-button" class="minus" data-quantity="minus" data_field="quantity" href="{{ object.get_add_to_cart_url }}">
+                            <i class="fa fa-minus" aria-hidden="true"></i>
+                        </button>
+                        <input class="input-group-field" type="number" name="quantity" value={{pItem.quantity}}>
+                        <button type="button" class="plus" data-quantity="plus" data-field="quantity">
+                            <i class="fa fa-plus" aria-hidden="true"></i> 
+                        </button>
+                    </div>
+                </td>
                 <td>                
                     {% if pItem.produk_item.harga_diskon %}
                     ${{ pItem.get_total_harga_diskon_item }}

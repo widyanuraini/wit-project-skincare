@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+<!--Main layout-->
+<main class="mt-5">
+    <div class="container">
+        <!-- Heading -->
+        <h2 class="my-5 text-center">Checkout</h2>
+
+            <form action="" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="yTF5g7ceTgkwsOimKxZpuV10DG4a1TWFwQ60pneu047lPvu6kTAlNYPfYEC9G8jq">
+                <tr>
+                    <th>
+                        <label for="id_email">Email:</label>
+                    </th>
+                    <td>
+                        <input type="email" name="email" maxlength="254" required id="id_email">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="id_subject">Subject:</label>
+                    </th>
+                    <td>
+                        <input type="text" name="subject" maxlength="255" required id="id_subject">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="id_message">Message:</label>
+                    </th>
+                    <td>
+                        <textarea name="message" cols="40" rows="10" required id="id_message"></textarea>
+                    </td>
+                </tr>
+                <input type="submit" value="Submit">
+            </form>
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content %}
